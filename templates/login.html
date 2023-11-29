@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <h1>Logg inn</h1>
+  
+  <form action="{{ url_for('login') }}" method ="POST">
+
+    {% if usr == None %}
+        <h3>Vennligst logg inn.</h3>
+
+    {% elif not usr %}
+        <h3>Bruker ikke funnet! Prøv igjen eller kontakt admin.</h3>
+
+    {% elif usr == True and verified == False %}
+        <h3>Logg inn igjen eller ta kontant med admin dersom det oppstår et problem.</h3>
+
+    {% elif usr == True and password == False %}
+        <h3>Feil i brukernavn eller passord.</h3>
+
+    {% endif %}
+
+        <h3>Brukernavn:</h3>
+        <br>
+        <input type="text" name="username" size="20" required></td>
+        <h3>Passord:</h3>
+        <br>
+        <input type="password" name="password" size="20" required></td>
+        <br>
+
+    <input type="submit" name="login" value="Login" class="buttons">
+  </form>
+
+{% endblock %}

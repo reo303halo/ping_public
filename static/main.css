@@ -1,0 +1,178 @@
+html, body {
+    height: 100%;
+}
+
+html { 
+    background: palegreen
+}
+
+body {
+    background-color: #77a8f4;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    color:white;
+    border-radius: 50% 20% / 10% 40%;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 20px;
+}
+
+h1.current {
+    color: #5a5a5a;
+    text-shadow: 1px 1px 1px #5192f4;
+}
+
+h2 {
+    font-size: 2.0em;
+    margin: 20px;
+}
+
+h2.code {
+    text-shadow: 1px 1px 2px black;
+}
+
+h3 {
+    font-size: 1.6em;
+    margin: 20px;
+}
+
+p {
+    font-size: 1.4em;
+    margin: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+input, button {
+    width: 25%;
+    height: 60px;
+    margin: 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+
+    text-align: center;
+    font-size: 1.4em;
+    color:#77a8f4;
+}
+
+.addAnswer {
+    width: 50%
+}
+
+#input {
+    width: 100%;
+    min-width: 30%;
+    height: auto;
+    min-height: 70px;
+    margin: 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+
+    text-align: left;
+    font-size: 1.4em;
+    color:#77a8f4;
+    word-break: break-all;
+}
+
+#addAnswer {
+    background-color: palegreen;
+}
+
+input:focus, button:focus {
+    border: solid 7px palegreen;
+    outline: none;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    font-size: 0.7em;
+}
+
+textarea {
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+
+    font-size: 1.4em;
+    color:#77a8f4;
+}
+
+#addSubject {
+    display: none;
+}
+
+#close {
+    cursor:pointer;
+}
+
+ul.folders {
+    display: inline-block;
+    text-align: left;
+    columns: 400px 3;
+    text-shadow: 1px 1px 1px #5192f4;
+}
+
+.speech-bubble {
+	position: relative;
+	background: #96d35f;
+	border-radius: .4em;
+    display: inline-block;
+    padding: 10px;
+    font-size: 1.5em;
+    margin: 20px;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 0.813em solid transparent;
+	border-top-color: #96d35f;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: -0.406em;
+	margin-bottom: -0.812em;
+}
+
+.box-header {
+    border-bottom: 1px solid #aac7ef;
+    padding-bottom: 5px;
+    display: table;
+    width: 100%;
+}
+
+.left-cell {
+    display: table-cell;
+    vertical-align: center;
+}
+
+.right-cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+}
+
+#myPlot {
+    position: center;
+    padding:0;
+    margin:0;
+
+    top:0;
+
+    width: 90%;
+    height: 90%;
+}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <style type="text/css">
+    .fa_custom {
+        color: #5a5a5a;
+    }
+    </style>
+        <h2 class="code">
+        {% if subject_id == None %}
+            Mine fag
+        {% else %}
+            Mine emner
+        {% endif %}
+        </h2>
+        <h3 class="code">PING!-kode: {{ quiz_id }}</h3>
+    <br>
+
+    <div id="subject">
+        <ul class="folders">
+            {% for i in subjects %}
+                <a class="fa fa-folder fa_custom fa-2x" href="?parent_id={{ i.parent_id }}&subject_id={{ i.subject_id }}">
+                   {{ i.subject_name }}</a>
+                <br>
+            {% endfor %}
+        </ul> 
+    </div>
+
+    <div id="addSubject">
+        <form name="update" method="POST" action="{{ url_for('addSubject') }}">
+            <tr>
+                <td><input type="text" name="subjectName" placeholder="Emnenavn..." required maxlength="50"/></td>
+            </tr>
+
+            <input type="submit" value="Legg til">
+            <p id="close" onclick ="div_hide()">Lukk</p>
+        </form>
+    </div>
+
+    <div id="addButton">
+         <button onclick="div_show()">
+        {% if subject_id == None %}
+            Legg til fag
+        {% else %}
+            Legg til emne
+        {% endif %}
+        </button>
+    </div>
+
+    <br>
+    <button onclick="history.back()">Tilbake</button>
+
+    <script>
+        function div_hide() {
+        document.getElementById('addSubject').style.display = "none";
+        document.getElementById('addButton').style.display = "block";
+        }
+        function div_show() {
+        document.getElementById('addSubject').style.display = "block";
+        document.getElementById('addButton').style.display = "none";
+        }
+    </script>
+
+{% endblock %}

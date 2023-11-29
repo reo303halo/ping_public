@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Sign Up Page</h1>
+
+    {% if usr == True %}
+        <h3>Denne emailen er allerede registrert.</h3>
+    {% elif username == None %}
+        <h3>Vennligst registrer deg.</h3>
+    {%  endif %}
+
+
+    <form action="{{ url_for('sign_up') }}" method ="post">
+        <table>
+            <tr>
+                <td>Email:</td>
+                <td><input id="input" type ="email" name ="e_mail"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input id="input" type ="password" name ="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
+                    id="password" required></td>
+            </tr>   
+            <tr>
+                <td>Confirm password:</td>
+                <td><input id="input" type ="password" name ="confirm_password" id="confirm_password" required></td>
+            </tr>   
+            <tr>
+                <td>Firstname:</td>
+                <td><input id="input" type ="text" name ="firstname"</td>
+            </tr>
+            <tr>
+                <td>Lastname:</td>
+                <td><input id="input" type ="text" name ="lastname"></td>
+            </tr>
+        </table>
+        <input type="submit" name="sign_up" value="Sign up" class="buttons">
+    </form>
+
+
+    <script>
+
+        //Checks if password matches
+    
+        var password = document.getElementById("password"), 
+        confirm_password = document.getElementById("confirm_password");
+    
+        function validatePassword() {
+            if (password.value == confirm_password.value) {
+              document.getElementById('message').style.color = 'green';
+              document.getElementById('message').innerHTML = 'New passord ok!';
+              confirm_password.setCustomValidity("");
+            } else {
+              document.getElementById('message').style.color = 'red';
+              document.getElementById('message').innerHTML = 'Confirm password does not match..';
+              confirm_password.setCustomValidity("Passwords Don't Match");
+            }
+          }
+    
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    
+    </script>
+    
+    <script>
+    
+      // Custom message to user if new password doesnt contain the requirements.
+    
+      var input = document.getElementById('password');
+    
+      input.oninvalid = function(event) {
+        event.target.setCustomValidity("Must contain: lowercase, uppercase, number and minimum 8 characters");
+    }
+    
+    </script>
+
+{% endblock %}

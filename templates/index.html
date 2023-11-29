@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  
+    <h1>Velkommen!</h1>
+
+    <h2>Vennligst velg rolle:</h2>
+
+    <a href="{{ url_for('quizCodePage') }}">
+        <button>Elev</button>
+    </a>
+
+    <a href="{{ url_for('teacher') }}">
+        <button>Lærer</button>
+    </a>
+
+{% endblock %}

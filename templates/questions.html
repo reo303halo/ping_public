@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h2 class="code">PING!-kode: {{ quiz_id }}</h2>
+  <br>
+
+  <h2>Gjeldende spørsmål:</h2>
+
+  <h1 class="current">{{ current.question }}</h1>
+  <br>
+  <br>
+
+  <h2>Klikk på et spørsmål for å aktivere det:</h2>
+
+  <form method="POST">
+    <table>
+        <tr>
+          <th>Spørsmål</th>
+          <th>Svar</th> 
+        </tr>
+
+        {% for q in questionLst %}
+        <tr>
+            <td>
+              <form method="POST">
+                <input type="hidden" name="set_current" value="{{ q.id }}"/>
+                <input id="input" type="submit" value="{{ q.question }}">
+              </form>
+            </td>
+            <td>
+            {% if q.correctAnswer == None %}
+              <input value="Åpent">
+            {% else %}
+              <input value="{{ q.correctAnswer }}">
+            {% endif %}
+            </td>
+            <td>
+              <form method="POST" action="{{ url_for('deleteQuestion') }}">
+                <input type="hidden" name="question_id" value="{{ q.id }}"/>
+                <input id="input" type="submit" value="Slett spørsmål" onclick="return confirm('Er du sikker på at du vil slette dette spørsmålet?');">
+              </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+  </form>
+
+
+  <form action="{{ url_for('add') }}">
+    <input type="hidden" value="{{ subject_id }}" name="subject_id"/>
+    <input id="addAnswer" type="submit" value="Legg til spørsmål">
+  </form>
+
+  <!--<button onclick="window.print();return false;">Skriv ut eller lagre</button>-->
+
+  <a href="{{ url_for('answers') }}" target="_blank">
+    <button>Se svar</button>
+  </a>  
+
+  <form action="{{ url_for('quitSession') }}">
+    <input type="submit" value="Avslutt økt" onclick="return confirm('Alle svar fra denne økten vil bli slettet. Er du sikker på at du vil avslutte?');">
+  </form>
+
+  <form href="{{ url_for('teacher') }}">
+    <input type="submit" value="Tilbake">
+  </form>
+
+{% endblock %}

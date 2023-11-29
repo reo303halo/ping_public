@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% if question != "" %}
+
+        <p>PING!-kode: {{ quiz_id }}</p>
+
+        <h2>{{ question.question }}</h2>
+
+        {% if question.options != None %}
+            
+        <form action="{{ url_for('addAnswer') }}" method="POST">
+            <input name="answer_id" type="hidden" value="{{ answer_id }}">
+            <tr>
+                <input name="answer" type="Submit" value="{{ question.options[0] }}">
+                <input name="answer" type="Submit" value="{{ question.options[1] }}">
+            </tr>
+            <br>
+            <tr>
+                <input name="answer" type="Submit" value="{{ question.options[2] }}">
+                <input name="answer" type="Submit" value="{{ question.options[3] }}">
+            </tr>
+        </form> 
+
+        {% else %}
+            
+        <form action="{{ url_for('addAnswer') }}" method="POST">
+            <br>
+            <input type="hidden" name="answer_id"  value="{{ answer_id }}">
+            <textarea name="answer" type="text" rows = "5" cols = "60"></textarea>
+            <br>
+            <input name="choice" type="Submit" value="Send inn og prøv på nytt">
+            <input name="choice" type="Submit" value="Send inn">
+        </form>
+
+        {% endif %}     
+
+    {% else %}
+
+        <h2>Ingen PING! med denne koden....</h2>
+        <p>Gå tilbake og prøv på nytt</p>
+        <button onclick="history.back()">Tilbake</button>
+
+    {% endif %}
+
+{% endblock %}

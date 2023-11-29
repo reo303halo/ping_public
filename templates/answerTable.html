@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang = "en">
+  <head>
+      <meta charset = "UTF-8" />
+      <link rel="stylesheet" href="static/main.css"/>
+  </head>
+  <body>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <p>PING!-kode: {{ quiz_id }}</p>
+  
+    <h2>{{ current.question }}</h2>
+  
+      {% if current.options == None %}
+        {% for answer in answers %}
+        
+          <div class="speech-bubble">
+              {{ answer.answer }}
+          </div>
+  
+        {% endfor %}
+  
+      {% else %}
+  
+        <div id="myPlot" style="max-width:70%; max-height: 100%; margin: auto;"></div>
+  
+      {% endif %}
+  
+  
+    <script>
+      const xArray = ["{{ current.options[0] }}", "{{ current.options[1] }}", "{{ current.options[2] }}", "{{ current.options[3] }}"];
+      const yArray = ["{{ counts[0] }}", "{{ counts[1] }}", "{{ counts[2] }}","{{ counts[3] }}"];
+  
+      
+      const data = [{
+        x:xArray,
+        y:yArray,
+        marker: {color: 'rgb(255,20,147)'},
+        type:"bar"
+      }];
+      
+      const layout = {
+        paper_bgcolor:'rgb(0, 0, 0, 0)',
+        plot_bgcolor:'rgba(0,0,0,0)'
+      };
+      
+      Plotly.newPlot("myPlot", data, layout);
+
+    </script>
+    <script>
+  
+      function autoRefresh() {
+          window.location = window.location.href;
+      }
+      setInterval('autoRefresh()', 12000);
+  
+    </script>
+  </body>
+</html>
+
+  

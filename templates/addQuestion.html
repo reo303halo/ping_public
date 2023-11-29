@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>Nytt spørsmål</h2>
+
+    <form name="update" method="POST" action="{{ url_for('addNew') }}">
+    <table>
+        <tr>
+            <td>Spørsmål:</td>
+            <td><input type="text" name="question" placeholder="Spørsmålstekst..." required maxlength="250" class="addAnswer"/></td>
+        </tr>
+        <tr>
+            <td>Alternativer til flervalgsoppgave / La stå tom om åpent spørsmål: </td>
+            <td><input type="text" name="options1" placeholder="Feks: USA" maxlength="50" class="addAnswer"/></td>
+            <td><input type="text" name="options2" placeholder="Feks: Norge" maxlength="50" class="addAnswer"/></td>
+            <td><input type="text" name="options3" placeholder="Feks: Sverige" maxlength="50" class="addAnswer"/></td>
+            <td><input type="text" name="options4" placeholder="Feks: Wakanda" maxlength="50" class="addAnswer"/></td>
+        </tr>
+    </table>
+    <label for="correctAnswer">Ved multiple choice: Hvilket svar er riktig:</label>
+    <select name="correctAnswer" id="correctAnswer">
+        <option value="0">Svar 1</option>
+        <option value="1">Svar 2</option>
+        <option value="2">Svar 3</option>
+        <option value="3">Svar 4</option>
+    </select>
+    <input type="hidden" value="{{ subject_id }}" name="subject_id"/>
+    <input type="submit" value="Legg til">
+    </form>
+
+    <a href="{{ url_for('tips') }}" target="_blank">
+        <button>Tips til hvordan lage gode spørsmål</button>
+    </a>
+
+    <button onclick="history.back()">Tilbake</button>
+
+{% endblock %}
